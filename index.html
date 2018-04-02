@@ -54,14 +54,106 @@
 						<li>Difficulté à remonter dans le temps (logrotate)</li>
 					</ul>
 				</section>
-				<section>Ère Framework PHP</section>
+				<section>Ère Framework PHP (Symfony)</section>
 				<section>
 					<p>Interface graphique via lexikMonologBundle</p>
 					<img src="img/5.jpg">
 				</section>
 				<section>
+					<p>Avantages</p>
+					<ul>
+						<li>Navigation temporelle aisé</li>
+						<li>Moteur de recherche</li>
+						<li>Filtrage par niveau de log</li>
+					</ul>
+				</section>
+				<section>
+					<p>Problématiques</p>
+					<ul>
+						<li>Pas d'alerting temps réel</li>
+						<li>Outil un peu sommaire</li>
+						<li>Bundle déprécié</li>
+						<li>Configuration pénible</li>
+					</ul>
+				</section>
+				<section>
 					<p>Envoi de mails</p>
 					<img src="img/6.png">
+				</section>
+				<section>
+					<p>Avantage</p>
+					<ul>
+						<li>Alerting temps réel</li>
+					</ul>
+				</section>
+				<section>
+					<p>Problématiques</p>
+					<ul>
+						<li>Flux important (flood)</li>
+						<li>Risque que les mails soient bloqués (lié au flood)</li>
+						<li>Impossible d'agréger les données</li>
+					</ul>
+				</section>
+				<section>
+					<p>Et enfin est arrivé ... Sentry</p>
+					<img src="img/7.png">
+				</section>
+				<section>
+					<p>Système de tracking d'erreur</p>
+					<p>Création : 2010</p>
+					<p>License : Open source</p>
+				</section>
+				<section>
+					Langages supportés
+					<img src="img/8.png">
+				</section>
+				<section>
+					<p>Un agent (Raven) récolte les données à envoyer sur Sentry</p>
+					<p>Focus sur PHP dans ce talk</p>
+				</section>
+				<section>
+					<p>Monolog</p>
+					<section data-markdown>
+						<script type="text/template">
+							```php
+							$client = new Raven_Client('https://d7a69c081b874dd1bcfcddeadfbfb74e@sentry.io/184591');
+
+							$handler = new Monolog\Handler\RavenHandler($client);
+							$handler->setFormatter(new Monolog\Formatter\LineFormatter("%message% %context% %extra%\n"));
+
+							$monolog->pushHandler($handler);
+							```
+						</script>
+					</section>
+				</section>
+				<section>
+					<p>Symfony</p>
+					<section data-markdown>
+						<script type="text/template">
+							```shell
+							composer require sentry/sentry-symfony
+							```
+							```php
+							# AppKernel.php
+
+							class AppKernel extends Kernel
+							{
+								public function registerBundles()
+								{
+									$bundles = array(
+										// ...
+										new Sentry\SentryBundle\SentryBundle(),
+									);
+							}
+							```
+							```yaml
+							# config/config.yml
+
+							sentry:
+							  dsn: "https://d7a69c081b874dd1bcfcddeadfbfb7e4:da36df1af0fe48f5945875a4209df74e@sentry.io/184593"
+							```
+						</script>
+					</section>
 				</section>
 			</div>
 		</div>
