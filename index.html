@@ -108,7 +108,7 @@
 					<img src="img/8.png">
 				</section>
 				<section>
-					<p>Un agent (Raven) récolte les données à envoyer sur Sentry</p>
+					<p>Un agent (Raven) récolte les données à envoyer sur la plateforme Sentry</p>
 					<p>Focus sur PHP dans ce talk</p>
 				</section>
 				<section>
@@ -154,6 +154,64 @@
 							```
 						</script>
 					</section>
+				</section>
+				<section>
+					<h2>Demo d'une erreur.</h2>
+				</section>
+				<section>
+					<p>Ok c'est cool, mais où est la vraie plus value de Sentry ?</p>
+					<p>Or mis une jolie UI...</p>
+				</section>
+				<section>
+					<ul>
+						<li>Aggrégation des données puissante</li>
+						<li>Intelligence du système d'alerting</li>
+						<li>Intégration tierce</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Système d'alertting</h2>
+					<p><< digestion >> des messages</p>
+					<p>Option de déclenchement :</p>
+					<ul>
+						<li>Event vu</li>
+						<li>Event vu pour la première fois</li>
+						<li>Match d'une regex</li>
+						<li>level atteint</li>
+						<li>Event vue X fois en Y minutes</li>
+						<li>etc...</li>
+					</ul>
+				</section>
+				<section>
+					Intégration tierce
+					<img src="img/10.png">
+				</section>
+				<section>
+					<p>Demo notification Slack</p>
+				</section>
+				<section>
+					<p>Tracking de bug par version</p>
+					<section data-markdown>
+						<script type="text/template">
+							```yml
+							sentry:
+							  options:
+							    release: "v4.8.2"
+							```
+						</script>
+					</section>
+				</section>
+				<section><img src="img/11.png"></section>
+				<section>
+					<h2>Business model</h2>
+					<p>Classique via un mode SaaS</p>
+					<p>Tarif par palier</p>
+					<p>Plan Selon fonctionnalité & nombre d'événement</p>
+				</section>
+				<section>
+					<p>Version onPremise open source</p>
+					<p>https://github.com/getsentry/onpremise</p>
+					<img src="img/9.png">
 				</section>
 			</div>
 		</div>
